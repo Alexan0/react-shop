@@ -1,0 +1,103 @@
+.header {
+	background-color: rgb(20, 18, 18);
+	padding: 15px 0;
+}
+
+.container {
+	max-width: 1230px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+.row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+}
+
+.title {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	cursor: pointer;
+
+	@media (min-width: 767.92px) {
+		gap: 10px;
+	}
+}
+
+.text {
+	font-size: 18px;
+	color: #fff;
+
+	@media (min-width: 479.92px) {
+		font-size: 20px;
+	}
+}
+
+.actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+
+	@media (min-width: 767.92px) {
+		gap: 30px;
+	}
+
+	@media (min-width: 479.92px) {
+		gap: 15px;
+	}
+}
+
+.search {
+	flex: 1 1 200px;
+
+	input {
+		background-color: #333;
+		min-height: 35px;
+		border-radius: 10px;
+		color: #fff;
+		padding-left: 10px;
+		padding-right: 7px;
+		width: 100%;
+		transition: all .3s ease;
+
+		@media (any-hover: hover) {
+			&:hover {
+				box-shadow: 0 0 0 2px #F4D8A5;
+			}
+
+			&:focus {
+				box-shadow: 0 0 0 2px #F4D8A5;
+			}
+		}
+	}
+}
+
+.basket {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	padding: 8px;
+	background-color: #F4D8A5;
+	border-radius: 10px;
+	transition: all .6s ease;
+
+	span {
+		font-size: 16px;
+		color: #333;
+		font-weight: 600;
+	}
+
+	@media (min-width: 479.92px) {
+		gap: 10px;
+		padding: 9px;
+	}
+
+	@media (any-hover: hover) {
+		&:hover {
+			box-shadow: 0 0 0 2px #F4D8A5;
+		}
+	}
+}
