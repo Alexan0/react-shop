@@ -24,7 +24,7 @@
 	flex: 1 1 auto;
 	display: flex;
 	flex-direction: column;
-	border: 7px solid rgb(20, 18, 18);
+	border: 1px solid rgb(20, 18, 18);
 
 	@media (any-hover: hover) {
 		&:hover {
@@ -38,6 +38,7 @@
 	height: 370px;
 	position: relative;
 	overflow: hidden;
+	border-radius: 5px 5px 0 0;
 
 	img {
 		position: absolute;
@@ -50,7 +51,7 @@
 }
 
 .info {
-	padding: 10px;
+	padding: 12px;
 	flex: 1 1 auto;
 	display: flex;
 	flex-direction: column;

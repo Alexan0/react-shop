@@ -26,14 +26,12 @@ const Home = () => {
 
   const showPopup = () => {
     document.body.style.overflow = "hidden"
-    document.body.style.paddingRight = "17px"
     setPopup(!popup)
   }
 
   const hiddenPopup = () => {
     setPopup(!popup)
     document.body.style.overflow = "auto"
-    document.body.style.paddingRight = "0"
   }
 
   const getItems = async () => {
