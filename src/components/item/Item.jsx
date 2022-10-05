@@ -1,14 +1,12 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { addItem } from '../../redux/slices/basketSlice';
-import { showPopup } from '../../redux/slices/popupSlice';
 
 import style from './Item.module.scss';
 
-const Item = ({id, image, title, price, }) => {
+const Item = ({ id, image, title, price, showPopup }) => {
 	const dispath = useDispatch();
-	const { popup } = useSelector(state => state.popup);
 
 	const onClickAdd = () => {
 		const item = {
@@ -18,7 +16,7 @@ const Item = ({id, image, title, price, }) => {
 			price,
 		};
 		dispath(addItem(item));
-		dispath(showPopup(!popup));
+		showPopup()
 	}
 
 	return (
