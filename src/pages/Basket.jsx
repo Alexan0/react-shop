@@ -10,12 +10,15 @@ import closeIcon from '../assets/img/icons8-close.svg';
 import '../assets/scss/style.scss';
 
 const Basket = () => {
-  const { totalCount, items } = useSelector(state => state.basket);
+  const { totalCount, items, deliveryCost } = useSelector(state => state.basket);
   const dispath = useDispatch();
 
-  const [popup, setPopup] = React.useState(false);
+  const [popupPay, setPopupPay] = React.useState(false);
+  const [popupInfo, setPopupInfo] = React.useState(false);
   const [timeActive, setTimeActive] = React.useState(0);
+
   const choiseTime = ['10:00 - 13:00', '13:00 - 17:00', '17:00 - 21:00', '21:00 - 00:00'];
+  const totalOrder = +totalCount + +deliveryCost;
 
   const onClickChoiseTime = (i) => {
     setTimeActive(i)
@@ -23,17 +26,23 @@ const Basket = () => {
 
   const showPopup = () => {
     document.body.style.overflow = "hidden"
-    setPopup(!popup)
+    setPopupPay(!popupPay)
   }
 
   const hiddenPopup = () => {
     document.body.style.overflow = "auto"
-    setPopup(!popup)
+    setPopupPay(false)
+    setPopupInfo(false);
   }
 
-  const payPtoducts =  () => {
-    hiddenPopup();
-    alert('Спасибо за ваш заказ!');
+  const payPtoducts = () => {
+    setPopupInfo(!popupInfo);
+  }
+
+  const productsPaid = () => {
+    document.body.style.overflow = "auto"
+    setPopupPay(false)
+    setPopupInfo(false);
     dispath(clearItems())
   }
 
@@ -57,8 +66,11 @@ const Basket = () => {
             }
           </div>
           <div className="content-basket__total total-basket">
-            <div className="total-basket__count">Всего вещей: <span>{items.length} шт.</span></div>
-            <div className="total-basket__price">Сумма заказа: <span>{totalCount} $</span></div>
+            <div className="total-basket__row">
+              <div className="total-basket__count">Всего вещей: <span>{items.length} шт.</span></div>
+              <div className="total-basket__count">Стоимость доставки: <span>{totalCount > 20 ? 'Доставка бесплатно!' : deliveryCost + ' $'}</span></div>
+            </div>
+            <div className="total-basket__price">Сумма заказа: <span>{totalCount > 20 ? totalCount : totalOrder} $</span></div>
           </div>
           <div className='content-basket__bottom'>
             <Link to={'/'} className='content-basket__return'>Вернуться назад</Link>
@@ -66,15 +78,15 @@ const Basket = () => {
           </div>
         </div>
         {
-          popup &&
+          popupPay &&
           <div className='popup'>
             <div className='popup__body'>
               <div className='popup__content'>
                 <div className='popup__info'>
                   <div className='popup__title'>Заполните данные</div>
-                  <div className="popup__label">К оплате <span>{totalCount}</span> $</div>
-                  <input className='popup__input' type="email" placeholder='Укажите вашу почту' />
+                  <div className="popup__label">К оплате <span>{totalCount > 20 ? totalCount : totalOrder}</span> $</div>
                   <input className='popup__input' type="text" placeholder='Адрес' />
+                  <input className='popup__input' type="number" placeholder='Укажите ваш номер телефона' />
                   <input className='popup__input' type="number" placeholder='Номер карты' />
                   <div className="popup__label">Выберете удобное время для доставки:</div>
                   <ul className="popup__list">
@@ -93,6 +105,21 @@ const Basket = () => {
                   <button onClick={payPtoducts} type='button' className="popup__button button-basket-popup">Оплатить</button>
                 </div>
                 <img src={closeIcon} onClick={hiddenPopup} className='popup__close close-basket-popup' alt="icon-close" />
+              </div>
+            </div>
+          </div>
+        }
+        {
+          popupInfo &&
+          <div className='popup'>
+            <div className='popup__body'>
+              <div className='popup__content'>
+                
+                  <div className="popup__info">
+                    <div className='popup__title'>Спасибо за ваш заказ!</div>
+                    <div className="popup__label">Наш курьер свяжется с вами &#128579;</div>
+                  </div>
+                  <img src={closeIcon} onClick={productsPaid} className='popup__close close-basket-popup' alt="icon-close" />
               </div>
             </div>
           </div>

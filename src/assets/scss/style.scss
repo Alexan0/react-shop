@@ -127,6 +127,9 @@ body {
 		flex-wrap: wrap;
 		column-gap: 5px;
 		row-gap: 10px;
+		@media (max-width: 501px) {
+				row-gap: 5px;
+			}
 	}
 
 	&__items {
@@ -184,9 +187,18 @@ body {
 }
 
 .total-basket {
+	div{
+		margin-bottom: 10px;
+		@media (max-width: 501px) {
+			margin-bottom: 5px;
+		}
+		&:last-child{
+			margin-bottom: 0;
+		}
+	}
 	&__count {
 		font-size: 18px;
-
+		line-height: 20px;
 		span {
 			font-weight: 700;
 			color: #F4D8A5;
@@ -243,7 +255,9 @@ body {
 		align-items: center;
 		justify-content: space-between;
 		gap: 10px;
+		widows: 100%;
 	}
+
 
 	&__title {
 		font-size: 20px;
