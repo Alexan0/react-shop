@@ -70,7 +70,7 @@ const Basket = () => {
               <div className="total-basket__count">Всего вещей: <span>{items.length} шт.</span></div>
               <div className="total-basket__count">Стоимость доставки: <span>{totalCount > 20 ? 'Доставка бесплатно!' : deliveryCost + ' $'}</span></div>
             </div>
-            <div className="total-basket__price">Сумма заказа: <span>{totalCount > 20 ? totalCount : totalOrder} $</span></div>
+            <div className="total-basket__price">Сумма заказа: <span>{totalCount > 20 ? totalCount : totalOrder.toFixed(2)} $</span></div>
           </div>
           <div className='content-basket__bottom'>
             <Link to={'/'} className='content-basket__return'>Вернуться назад</Link>
@@ -84,7 +84,7 @@ const Basket = () => {
               <div className='popup__content'>
                 <div className='popup__info'>
                   <div className='popup__title'>Заполните данные</div>
-                  <div className="popup__label">К оплате <span>{totalCount > 20 ? totalCount : totalOrder}</span> $</div>
+                  <div className="popup__label">К оплате <span>{totalCount > 20 ? totalCount : totalOrder.toFixed(2)}</span> $</div>
                   <input className='popup__input' type="text" placeholder='Адрес' />
                   <input className='popup__input' type="number" placeholder='Укажите ваш номер телефона' />
                   <input className='popup__input' type="number" placeholder='Номер карты' />
