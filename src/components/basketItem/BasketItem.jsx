@@ -16,12 +16,10 @@ const BasketItem = ({ id, title, image, price }) => {
 	}
 	return (
 		<div className={style.item}>
-			<div className={style.image}>
+			<Link to={`/item/${id}`} className={style.image}>
 				<img src={image} alt="image-item" />
-			</div>
-			<div className={style.title}>
-				{title.length >= 30 ? title.slice(0, 30) + '...' : title}
-			</div>
+			</Link>
+			<Link to={`/item/${id}`} className={style.title}>{title.length >= 30 ? title.slice(0, 30) + '...' : title}</Link>
 			<div className={style.price}>{price}$</div>
 			<button onClick={onClickRemoveItem} type='button' className={style.delete}>Удалить</button>
 		</div>
