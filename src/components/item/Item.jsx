@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { addItem } from '../../redux/slices/basketSlice';
@@ -22,11 +23,13 @@ const Item = ({ id, image, title, price, showPopup }) => {
 	return (
 		<div className={style.column}>
 			<div className={style.item}>
-				<div className={style.image}>
-					<img src={image} alt="photo" />
-				</div>
+				<Link to={`item/${id}`}>
+					<div className={style.image}>
+						<img src={image} alt="photo" />
+					</div>
+				</Link>
 				<div className={style.info}>
-					<div className={style.title}>{title}</div>
+					<Link to={`item/${id}`}><div className={style.title}>{title}</div></Link>
 					<div className={style.price}>{price}$</div>
 					<div onClick={onClickAdd} className={style.button}>Купить</div>
 				</div>

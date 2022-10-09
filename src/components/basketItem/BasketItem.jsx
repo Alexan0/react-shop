@@ -1,13 +1,14 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
+import { useDispatch } from 'react-redux';
 import { removeItem } from '../../redux/slices/basketSlice';
 
 import style from './BasketItem.module.scss';
 
-const BasketItem = ({id, title, image, price}) => {
+const BasketItem = ({ id, title, image, price }) => {
 	const dispath = useDispatch();
-	
+
 	const onClickRemoveItem = () => {
 		if (window.confirm('Ты действительно хочешь удалить этот товар?')) {
 			dispath(removeItem(id))
