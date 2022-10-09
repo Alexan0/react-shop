@@ -67,6 +67,7 @@ body {
 		justify-content: center;
 		align-items: center;
 		margin-top: 40px;
+		margin-bottom: 40px;
 
 		button {
 			border: none;
@@ -279,6 +280,7 @@ body {
 		line-height: 22px;
 		color: #fff;
 		margin-bottom: 10px;
+		word-break: break-word;
 		@media (max-width: 479.92px) {
 				font-size: 18px;
 				line-height: 20px;
