@@ -24,7 +24,7 @@ const Header = () => {
                </Link>
                <div className={style.actions}>
                   {
-                     location.pathname !== '/basket' && (
+                     location.pathname === '/'  && (
                         <div className={style.search}>
                            <input onChange={(searchText) => dispath(searchBy(searchText.target.value))} value={searchText} type="text" placeholder='Поиск по каталогу' />
                         </div> 

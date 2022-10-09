@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { useParams, Link } from 'react-router-dom';
+import { useParams ,Link } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 import { addItem } from '../redux/slices/basketSlice';
